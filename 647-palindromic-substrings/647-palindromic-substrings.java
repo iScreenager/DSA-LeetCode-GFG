@@ -1,7 +1,7 @@
 class Solution {
     
     public int countSubstrings(String s) {
-        if(s.length()==0){
+        if(s==null ||s.length()==0){
             return 0;
         }
         int c = 0;
