@@ -1,14 +1,10 @@
-/**
- * @param {number[]} nums
- * @param {number} target
- * @return {number}
- */
-var searchInsert = function(nums, target) {
-    let s = 0;
-        let e = nums.length-1;
-    
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int s = 0;
+        int e = nums.length-1;
+        
         while(s <= e){
-            let mid = Math.floor(s+(e-s)/2);
+            int mid = s+(e-s)/2;
             
             if(nums[mid]== target){
                 return mid;
@@ -20,5 +16,5 @@ var searchInsert = function(nums, target) {
         }
         return s;
         
-    
-};
+    }
+}
