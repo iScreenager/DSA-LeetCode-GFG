@@ -13,14 +13,18 @@ class Solution {
         if(head == null){
             return head;
         }
-        ListNode head1 = head;
-        while(head.next != null){
-        if(head.val == head.next.val){
-            head.next = head.next.next;
-        }else{
-            head = head.next;
-        }
-        }
-        return head1;
+        
+        ListNode list = head;
+         
+         while(list.next != null) {
+        	
+        	 if (list.val == list.next.val) {
+        		 list.next = list.next.next;
+        	 } else {
+        		 list = list.next;
+        	 }
+         }
+         
+         return head;
     }
 }
