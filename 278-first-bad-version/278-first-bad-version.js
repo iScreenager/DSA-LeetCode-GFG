@@ -19,19 +19,24 @@ var solution = function(isBadVersion) {
      */
     return function(n) {
         
+        if (isBadVersion(1)) {
+		return 1;
+	}
+
+        
         let i = 1;
         let j = n;
         
         while(i < j){
-            const m = Math.floor(i+(j-i)/2);
+            const m = Math.floor(i+(j-i)/2)+1;
             
-            if(isBadVersion(m)){
-                j = m;
+            if(!isBadVersion(m)){
+                 i = m;
             }else{
-               i = m+1; 
+               j = m-1; 
             }
         }
-        return i;
+        return j+1;
         
     };
 };
