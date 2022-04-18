@@ -6,7 +6,7 @@ class Solution {
             int addElm = 0;
             int num = 1;
             
-            while(addElm < k && i < arr.length){
+            while(addElm <= k && i < arr.length){
                     
                     if(num != arr[i]){
                            
