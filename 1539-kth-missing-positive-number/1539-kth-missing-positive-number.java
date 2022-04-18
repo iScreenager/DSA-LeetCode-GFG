@@ -25,7 +25,7 @@ class Solution {
                     }
             }
             
-            while(addElm < k){
+            while(addElm <= k){
                      dummyArr.add(num);
                             num++;
                             addElm++;
