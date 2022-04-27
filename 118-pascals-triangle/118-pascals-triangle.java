@@ -1,6 +1,8 @@
 class Solution {
     public List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> res = new ArrayList<List<Integer>>();
+                        
+
+               List<List<Integer>> res = new ArrayList<List<Integer>>();
 		List<Integer> row, pre = null;
 		for (int i = 0; i < numRows; ++i) {
 			row = new ArrayList<Integer>();
@@ -13,5 +15,9 @@ class Solution {
 			res.add(row);
 		}
 		return res;
+            
+            
+            
+        
     }
 }
