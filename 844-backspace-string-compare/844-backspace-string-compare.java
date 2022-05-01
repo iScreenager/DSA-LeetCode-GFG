@@ -10,14 +10,14 @@ class Solution {
             }
     }
         
-        public String removeSpace(String s){
+        public String removeSpace(String str){
                 Stack<Character> st = new Stack<>();
-                for(int i=0;i<s.length();i++){
-                        if(s.charAt(i) == '#'){
+                for(int i=0;i<str.length();i++){
+                        if(str.charAt(i) == '#'){
                                 if(!st.isEmpty())
                                 st.pop();
                         }else{
-                              st.push(s.charAt(i));  
+                              st.push(str.charAt(i));  
                         }
                 }
                 String ans = "";
