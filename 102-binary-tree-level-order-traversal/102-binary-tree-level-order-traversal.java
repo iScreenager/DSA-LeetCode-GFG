@@ -30,11 +30,11 @@ class Solution {
                     int c = q.size();
                     
                     for(int i=0;i<c;i++){
-                           if(q.peek().left != null) q.offer(q.peek().left);
-                             if(q.peek().right != null) q.offer(q.peek().right);
-                            lc.add(q.peek().val);
-                            q.poll();
+                           TreeNode node = q.poll();
+                            lc.add(node.val);
                             
+                            if(node.left != null) q.offer(node.left);
+                            if(node.right != null) q.offer(node.right);
                     
                     }
                     ls.add(lc);
