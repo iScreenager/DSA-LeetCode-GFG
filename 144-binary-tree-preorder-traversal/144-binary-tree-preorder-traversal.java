@@ -20,23 +20,9 @@ class Solution {
                     return list;
             }
             
-            Stack<TreeNode> st = new Stack<>();
-            st.push(root);
-            
-            while(st.size() > 0){
-                    TreeNode top = st.peek();
-                     list.add(top.val);
-                    st.pop();
-                    
-                    if(top.right != null){
-                            st.push(top.right);
-                    }
-                    
-                    if(top.left != null){
-                            st.push(top.left);
-                    }
-                    
-            }
+            list.add(root.val);
+           list.addAll(preorderTraversal(root.left));
+            list.addAll(preorderTraversal(root.right));
           return list;  
         
     }
