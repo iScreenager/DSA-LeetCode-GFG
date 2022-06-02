@@ -1,12 +1,13 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        if (intervals.length <= 1)
-			return intervals;
-        
-        Arrays.sort(intervals, (a, b) -> Double.compare(a[0], b[0]));
-        
-        List<int[]> result = new ArrayList<>();
-        int[] newInterval = intervals[0];
+            
+            if(intervals.length == 1) return intervals;
+            
+            Arrays.sort(intervals, (a, b) -> Double.compare(a[0], b[0]));
+            
+            ArrayList<int[]> result = new ArrayList<>();
+           
+            int[] newInterval = intervals[0];
         result.add(newInterval);
         for(int[] i: intervals){
             if(i[0] <= newInterval[1]){
@@ -18,5 +19,7 @@ class Solution {
             }
         }
         return result.toArray(new int[result.size()][]);
+    
+        
     }
 }
