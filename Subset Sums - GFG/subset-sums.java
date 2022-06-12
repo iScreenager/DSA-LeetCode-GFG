@@ -34,23 +34,25 @@ class GFG
 class Solution{
     ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
         // code here
-        ArrayList<Integer> sumSubset = new ArrayList<>();
-        
-        helperFun(0,0,arr,N,sumSubset);
-        Collections.sort(sumSubset);
+         Collections.sort(arr);        
+
+      ArrayList<Integer> sumSubset = new ArrayList<>();
+        helper(0,0,arr,N,sumSubset);
         return sumSubset;
+        
+        
     }
     
-  static void helperFun(int idx,int sum,ArrayList<Integer> arr,int N,ArrayList<Integer> sumSubset){
-      
-      if(idx == N){ 
-      sumSubset.add(sum);
-      return;
-      }
-      
-      helperFun(idx+1,sum+arr.get(idx),arr,N,sumSubset);
-       helperFun(idx+1,sum,arr,N,sumSubset);
-      
-      
-  }
+   void helper(int idx,int sum, ArrayList<Integer> arr,int n,ArrayList<Integer> list){
+        if(idx == n){
+            list.add(sum);
+         return;
+        }
+        
+        helper(idx+1,sum+arr.get(idx),arr,n,list);
+        helper(idx+1,sum,arr,n,list);
+        
+        
+        
+    }
 }
