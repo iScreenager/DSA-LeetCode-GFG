@@ -16,11 +16,18 @@ class Solution {
             
         
     }
-        public int count(int[][] matrix, int k){
+        public int count(int[][] matrix, int mid){
                 int count=0;
-                for(int i=0;i<matrix.length;i++){
-                        for(int j=0;j<matrix[0].length;j++){
-                                if(matrix[i][j] <= k) count++;
+                int r = matrix.length-1;
+                int c =0;
+                while(r>=0 && c<matrix.length){
+                       if(matrix[r][c] <= mid){
+                               count+= r + 1;;
+                               c++;
+                               
+                       } 
+                        else{
+                                r--;
                         }
                 }
                 return count;
