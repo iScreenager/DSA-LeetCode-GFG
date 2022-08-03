@@ -10,6 +10,9 @@ int[] dp = new int[n+1];
                 
                 if(dp[n] != -1) return dp[n];
             
-            return dp[n] = helperFib(n-1,dp)+helperFib(n-2,dp);
+            int lh = helperFib(n-1,dp);
+                int rh = helperFib(n-2,dp);
+                
+                return dp[n]=lh+rh;
         }
 }
