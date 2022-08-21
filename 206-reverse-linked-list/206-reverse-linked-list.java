@@ -11,17 +11,22 @@
 class Solution {
     public ListNode reverseList(ListNode head) {
             if(head == null) return null;
-            ListNode pre = null;
-            ListNode curr = head;
-            ListNode nex = head.next;
-            
-            while(curr != null){
-                  curr.next = pre;
-                    pre = curr;
-                    curr = nex;
-                    if(nex != null) nex = nex.next;
-            }
-            return pre;
+            if (head.next == null) {
+            return head;
+        }
+        // Ask recursion to return the Reversed Head
+        // Have Faith
+
+        ListNode reverseHead = reverseList(head.next);
+
+        // Reverse the Adjacent Nodes that is, Head & Head's Next Node
+
+        head.next.next = head;
+        head.next = null;
+
+        // Return the Reversed Head at the end
+
+        return reverseHead;
         
     }
 }
