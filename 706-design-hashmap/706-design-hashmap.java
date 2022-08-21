@@ -1,24 +1,83 @@
+/*
+The HashMap class will be designed in the exactly same manner as HashSet Class
+The only difference here is that we need to store {key , value} pair in place of only key
+Again, to avoid collisions we will be using the concept of Hashing.
+Our vector will be of type <list<pair<int , int>> that is, a Doubly LinkedList which stores a pair of <int , int> in place of our normal int values
+
+Our HashMap Class has the following functions:
+
+a) void put(int key , int value) --> Inserts the key with value inside our HashMap
+b) int get(int key) --> Returns the value which is associated with our key(if present) else returns -1
+c) void remove(int key) --> Deletes the key along with the Value associated with the Key
+
+*/
+
 class MyHashMap {
-public int[] map;
-        
+    // We use the Linked list data structure to store all our{key,value} pairs of HashMap Class
+    LinkedList<Pair>[] bucket;
+    final int SIZE = 1009; // assigning it to larger prime number
+
+    //Pair class
+    class Pair {
+        int key;
+        int val;
+
+        public Pair(int key, int val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+
     public MyHashMap() {
-        map = new int[(int)1e6+1];
-            Arrays.fill(map,-1);
+        bucket = new LinkedList[SIZE];
+        for (int i = 0; i < bucket.length; i++)
+            // initialising the array with empty linked list of pair
+            bucket[i] = new LinkedList<Pair>();
+
     }
-    
+
+    /** value will always be non-negative. */
     public void put(int key, int value) {
-        map[key] = value;
+        int index = getHash(key); // identify the bucket
+        LinkedList<Pair> PairLink = bucket[index];
+        if (get(key) != -1) remove(key); // if the key is available then remove it // same as update
+        Pair Pair = new Pair(key, value); //otherwise
+        PairLink.add(Pair);
     }
-    
+
+    /** Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key */
     public int get(int key) {
-            return map[key]!=-1? map[key]:-1;
-        
+        int index = getHash(key);
+        LinkedList<Pair> PairLink = bucket[index];
+        Iterator<Pair> it = PairLink.iterator();
+        while (it.hasNext()) {
+            Pair pair = it.next();
+            if (pair.key == key) return pair.val;
+        }
+        return -1;
     }
-    
+
+    /** Removes the mapping of the specified value key if this map contains a mapping for the key */
     public void remove(int key) {
-        map[key] = -1;
+        int index = getHash(key);
+        LinkedList<Pair> PairLink = bucket[index];
+        Iterator<Pair> it = PairLink.iterator();
+        while (it.hasNext()) {
+            Pair pair = it.next();
+            if (pair.key == key) it.remove();
+        }
+    }
+
+    // getHash function will calculates the index by taking the modulo with the SIZE
+    public int getHash(int key) {
+        return key % SIZE;
     }
 }
+
+/*
+Time Complexity:  O(N) --> In the worst case, we need to search the entire bucket[i] to check if key is present
+Space Complexity: O(N) --> We use a LinkedList<Pair>[] bucket to store the {key , value} pairs
+*/
 
 /**
  * Your MyHashMap object will be instantiated and called as such:
